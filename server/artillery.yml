@@ -1,0 +1,18 @@
+config:
+  target: http://localhost:3000
+  phases:
+    - duration: 60
+      arrivalRate: 300
+  defaults:
+    headers:
+  payload:
+    path: "product_id_example.csv"
+    fields:
+      - "product_id"
+
+scenarios:
+  - flow:
+      - get:
+          url: "/reviews"
+          json:
+            product_id: "{{ product_id }}"
